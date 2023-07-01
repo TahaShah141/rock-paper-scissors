@@ -1,6 +1,6 @@
 let choices = ["Rock", "Scissors", "Paper"]; //each choice beats the next one
 
-let getComputerChoice = function() {
+function getComputerChoice() {
     let num = Math.round(Math.random() * 100) % 3;
     return choices[num];
 }
@@ -21,5 +21,23 @@ function getIndex(choiceName) {
     else if (choiceName == "PAPER") return 2;
 }
 
-let selection = "rocK";
-console.log(playRound(selection, getComputerChoice()));
+function game() {
+    let score = 0;
+    let drawCount = 0;
+    for (let i = 0; i < 5; i++)
+    {
+        let playerSelection = prompt("Rock, Paper or Scissors");
+        let computerSelection = getComputerChoice();
+        let results = playRound(playerSelection, computerSelection);
+        if (results == 1) score += 1;
+        if (results == 0) drawCount += 1;
+        if (results == 0) console.log(`Draw! Both Chose ${computerSelection.toUpperCase()}`);
+        else if (results == 1) console.log(`Won! ${playerSelection.toUpperCase()} beats ${computerSelection.toUpperCase()}`);
+        else if (results == -1) console.log(`Loss! ${computerSelection.toUpperCase()} beats ${playerSelection.toUpperCase()}`);
+    }
+
+    computerScore = 5 - drawCount - score;
+    console.log(`Final Score:\nPlayer: ${score}\t\tComputer: ${computerScore}\n${score > computerScore ? "Player Won" : score == computerScore ? "Both Tied" : "Computer Won"}`);
+}
+
+game();
