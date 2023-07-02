@@ -1,0 +1,61 @@
+* {
+    /* border: 1px solid red; */
+}
+
+hr {
+    margin: 20px 0;
+}
+
+body {
+    background-color: #1f1f1f;
+}
+
+h1.title {
+    color: whitesmoke;
+    font-size: 50px;
+    text-align: center;
+    margin: 0;
+}
+
+p.choice {
+    color: whitesmoke;
+    font-size: 30px;
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    padding: 0 30px;
+}
+
+img.button {
+    flex: 1;
+    height: 200px;
+    color: whitesmoke;
+    border: 3px dashed #DDD;
+    border-radius: 20px;
+    margin: 0 30px;
+}
+
+.scores {
+    display: flex;
+    color: whitesmoke;
+    padding: 0 150px;
+}
+
+.player, .computer {
+    flex: 1;
+}
+
+.player p{
+    text-align: center;
+}
+
+.computer p{
+    text-align: center;
+}
+
+#playerScore, #computerScore {
+    font-size: 40px;
+    margin: 0;
+}

@@ -21,23 +21,33 @@ function getIndex(choiceName) {
     else if (choiceName == "PAPER") return 2;
 }
 
-function game() {
-    let score = 0;
-    let drawCount = 0;
-    for (let i = 0; i < 5; i++)
-    {
-        let playerSelection = prompt("Rock, Paper or Scissors");
-        let computerSelection = getComputerChoice();
-        let results = playRound(playerSelection, computerSelection);
-        if (results == 1) score += 1;
-        if (results == 0) drawCount += 1;
-        if (results == 0) console.log(`Draw! Both Chose ${computerSelection.toUpperCase()}`);
-        else if (results == 1) console.log(`Won! ${playerSelection.toUpperCase()} beats ${computerSelection.toUpperCase()}`);
-        else if (results == -1) console.log(`Loss! ${computerSelection.toUpperCase()} beats ${playerSelection.toUpperCase()}`);
-    }
+const buttons = document.querySelectorAll(".button")
+buttons.forEach((button) => button.addEventListener("click", clicked))
 
-    computerScore = 5 - drawCount - score;
-    console.log(`Final Score:\nPlayer: ${score}\t\tComputer: ${computerScore}\n${score > computerScore ? "Player Won" : score == computerScore ? "Both Tied" : "Computer Won"}`);
+
+const scoreboard = document.querySelector(".scoreboard")
+function clicked(e) {
+    endgame("taha");
+    let playerSelection = e.target.alt;
+    let computerSelection = getComputerChoice();
+    let result = playRound(playerSelection, computerSelection);
+    
+    let id;
+    if (result === 1) id = "Player";
+    else if (result === -1) id = "Computer";
+    else return;
+
+    const score = document.getElementById(id);
+    let prevScore = score.textContent;
+    score.textContent = Number(prevScore) + 1;
+
+    if (prevScore === 4) endgame(id);
 }
 
-game();
+
+//TODO
+function endgame(winner) {
+    //delete scoreboard div
+    //add ending text
+    //prompt for new game
+}
